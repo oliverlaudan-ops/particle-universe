@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Universe</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <header>
+            <h1>Particle Universe</h1>
+            <p class="subtitle">Du hast Zeit. Das Universum hat sie auch.</p>
+        </header>
+
+        <main>
+            <div id="universe-display">
+                <pre id="ascii-art"></pre>
+                <p id="narrative"></p>
+            </div>
+
+            <div id="stats">
+                <div class="stat">
+                    <span class="label">Stufe:</span>
+                    <span id="stage">Partikel</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Existential Weight:</span>
+                    <span id="weight">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Partikel:</span>
+                    <span id="particles">1</span>
+                </div>
+            </div>
+
+            <div id="actions">
+                <button id="btn-create">Erschaffen</button>
+                <button id="btn-merge">Vereinigen</button>
+                <button id="btn-ascend" disabled>Transzendieren</button>
+            </div>
+
+            <div id="upgrades">
+                <h3>Upgrades</h3>
+                <div id="upgrade-list"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p id="time-display"></p>
+        </footer>
+    </div>
+
+    <script src="js/narrative.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/universe.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #0a0a0f;
+    --bg-card: #12121a;
+    --text-main: #e0e0e0;
+    --text-dim: #666680;
+    --accent: #7c5ce7;
+    --accent-glow: #9d7cff;
+    --warning: #ff6b6b;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#game-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    color: var(--accent-glow);
+    text-shadow: 0 0 20px var(--accent);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+#universe-display {
+    background: var(--bg-card);
+    border: 1px solid #1a1a25;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 24px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#ascii-art {
+    font-size: 10px;
+    line-height: 1.2;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 20px;
+    white-space: pre;
+    text-shadow: 0 0 10px var(--accent);
+}
+
+#narrative {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+#stats {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.stat {
+    background: var(--bg-card);
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1px solid #1a1a25;
+}
+
+.stat .label {
+    color: var(--text-dim);
+    margin-right: 8px;
+}
+
+.stat #weight {
+    color: var(--accent-glow);
+    font-weight: bold;
+}
+
+#actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+button {
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--accent);
+    padding: 12px 28px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+    background: var(--accent);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--accent);
+}
+
+button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+#upgrades h3 {
+    text-align: center;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+#upgrade-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.upgrade {
+    background: var(--bg-card);
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #1a1a25;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upgrade:hover {
+    border-color: var(--accent);
+}
+
+.upgrade.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.upgrade-name {
+    color: var(--accent-glow);
+    margin-bottom: 4px;
+}
+
+.upgrade-cost {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
