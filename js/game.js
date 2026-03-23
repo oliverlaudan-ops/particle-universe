@@ -10,6 +10,7 @@ class Game {
         this.elements = {
             stage: document.getElementById('stage'),
             weight: document.getElementById('weight'),
+            passiveRate: document.getElementById('passive-rate'),
             particles: document.getElementById('particles'),
             btnCreate: document.getElementById('btn-create'),
             btnMerge: document.getElementById('btn-merge'),
@@ -118,8 +119,12 @@ class Game {
     render() {
         // Update stats
         this.elements.stage.textContent = this.universe.stageData.name;
-        this.elements.weight.textContent = this.universe.existentialWeight.toLocaleString();
-        this.elements.particles.textContent = this.universe.particles.toLocaleString();
+        this.elements.weight.textContent = Math.floor(this.universe.existentialWeight).toLocaleString();
+        
+        const passiveRate = this.universe.getPassiveIncome();
+        this.elements.passiveRate.textContent = `${passiveRate.toFixed(1)}/s`;
+        
+        this.elements.particles.textContent = Math.floor(this.universe.particles).toLocaleString();
 
         // Update button states
         const createCost = this.universe.getParticleCost();
@@ -182,8 +187,12 @@ class Game {
 
     startTicks() {
         this.tickInterval = setInterval(() => {
-            // Could add passive income here later
-            // For now, it's all manual
+            // Apply passive income
+            const income = this.universe.getPassiveIncome();
+            if (income > 0) {
+                this.universe.particles += income;
+                this.universe.existentialWeight += income * 0.1;
+            }
             this.render();
         }, this.tickRate);
     }

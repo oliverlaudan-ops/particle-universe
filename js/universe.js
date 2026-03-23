@@ -4,10 +4,10 @@ const UPGRADES = [
     {
         id: 'quark_density',
         name: 'Quark Dichte',
-        description: 'Erhöht die Partikel-Produktion',
+        description: '+50% passives Einkommen pro Stufe',
         baseCost: 10,
         costMultiplier: 1.5,
-        effect: { type: 'particle_boost', value: 2 },
+        effect: { type: 'passive_boost', value: 0.5 },
         requiresStage: 'particle',
         maxLevel: 10
     },
@@ -120,26 +120,46 @@ class Universe {
 
     getAscensionCost(stage) {
         const baseCosts = {
-            particle: 50,
-            atom: 500,
-            molecule: 5000,
-            star: 50000,
-            planet: 500000,
-            life: 5000000,
-            civilization: 50000000,
+            particle: 100,
+            atom: 1000,
+            molecule: 10000,
+            star: 100000,
+            planet: 1000000,
+            life: 10000000,
+            civilization: 100000000,
             universe: Infinity
         };
         return baseCosts[stage] || Infinity;
     }
 
     getParticleCost() {
-        const baseCost = 10;
-        return Math.floor(baseCost * Math.pow(1.1, this.particles));
+        const baseCost = 1; // Start cheap, scales with particles owned
+        return Math.floor(baseCost * Math.pow(1.05, this.particles));
     }
 
     getMergeCost() {
-        const baseCost = 25;
-        return Math.floor(baseCost * Math.pow(1.15, this.particles));
+        const baseCost = 5;
+        return Math.floor(baseCost * Math.pow(1.08, this.particles));
+    }
+
+    // Passive income per second based on stage
+    getPassiveIncome() {
+        const stageIncomes = {
+            particle: 0.5,
+            atom: 2,
+            molecule: 8,
+            star: 30,
+            planet: 100,
+            life: 400,
+            civilization: 2000,
+            universe: 10000
+        };
+        let base = stageIncomes[this.stage] || 1;
+        
+        // Boost from upgrades
+        base *= (1 + this.getUpgradeLevel('quark_density') * 0.5);
+        
+        return base;
     }
 
     getUpgradeCost(upgradeId) {
