@@ -6,11 +6,11 @@
     <title>Particle Universe</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="cycle-low">
     <div id="game-container">
         <header>
             <h1>Particle Universe</h1>
-            <p class="subtitle">Du hast Zeit. Das Universum hat sie auch.</p>
+            <p class="subtitle">Du hast Zeit. Das Universum hat sie auch. Aber wie viel?</p>
         </header>
 
         <main>
@@ -38,10 +38,20 @@
                 </div>
             </div>
 
+            <div id="prestige-stats">
+                <span id="cycle">Zyklus 1</span>
+                <span class="sep">|</span>
+                <span id="memory">0x</span>
+                <span class="sep">|</span>
+                <span id="awareness">0</span>
+                <span class="label-small">Bewusstsein</span>
+            </div>
+
             <div id="actions">
-                <button id="btn-create">Erschaffen</button>
-                <button id="btn-merge">Vereinigen</button>
+                <button id="btn-create">Erschaffen (1)</button>
+                <button id="btn-merge">Vereinigen (3)</button>
                 <button id="btn-ascend" disabled>Transzendieren</button>
+                <button id="btn-prestige" style="display: none;">Zyklus beenden</button>
             </div>
 
             <div id="upgrades">
@@ -52,6 +62,7 @@
 
         <footer>
             <p id="time-display"></p>
+            <p class="hint">Tastatur: C=Erschaffen, M=Vereinigen, A=Transzendieren, P=Prestige, R=Reset</p>
         </footer>
     </div>
 

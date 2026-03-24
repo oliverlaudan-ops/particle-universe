@@ -1,5 +1,17 @@
 const STAGES = NARRATIVE.getAllStageNames();
 
+// Awareness gained per stage (Fibonacci-ish)
+const AWARENESS_MAP = {
+    particle: 0,
+    atom: 1,
+    molecule: 2,
+    star: 3,
+    planet: 5,
+    life: 8,
+    civilization: 13,
+    universe: 21
+};
+
 const UPGRADES = [
     {
         id: 'quark_density',
@@ -152,6 +164,12 @@ class Universe {
         this.upgrades = {};
         this.lastSave = Date.now();
 
+        // Prestige system
+        this.cycle = 1;
+        this.cosmicMemory = 0;
+        this.awareness = 0;
+        this.maxAwarenessThisCycle = 0;
+
         // Initialize upgrade levels
         UPGRADES.forEach(u => {
             this.upgrades[u.id] = { level: 0 };
@@ -176,6 +194,67 @@ class Universe {
         if (this.isMaxStage) return false;
         const nextStage = STAGES[this.stageIndex + 1];
         return this.particles >= this.getAscensionCost(nextStage);
+    }
+
+    get canPrestige() {
+        return this.isMaxStage;
+    }
+
+    getAwarenessLevel() {
+        if (this.awareness >= 20) return 2;
+        if (this.awareness >= 5) return 1;
+        return 0;
+    }
+
+    getCosmicMultiplier() {
+        return 1 + (this.cosmicMemory * 0.05);
+    }
+
+    getPrestigeGain() {
+        if (!this.canPrestige) return 0;
+        return Math.floor(Math.sqrt(this.totalWeightGenerated / 1000000));
+    }
+
+    ascend() {
+        if (!this.canAscend) return false;
+
+        const nextStage = STAGES[this.stageIndex + 1];
+        const cost = this.getAscensionCost(nextStage);
+        
+        this.particles -= cost;
+        this.stageIndex++;
+        this.applyStage();
+        
+        // Gain awareness
+        const awarenessGain = AWARENESS_MAP[this.stage] || 0;
+        this.awareness += awarenessGain;
+        this.maxAwarenessThisCycle = Math.max(this.maxAwarenessThisCycle, this.awareness);
+
+        return true;
+    }
+
+    prestige() {
+        if (!this.canPrestige) return false;
+
+        const gain = this.getPrestigeGain();
+        this.cosmicMemory += gain;
+        this.cycle++;
+        
+        // Reset cycle progress
+        this.stageIndex = 0;
+        this.particles = 1;
+        this.existentialWeight = 0;
+        this.totalWeightGenerated = 0;
+        this.awareness = 0;
+        this.maxAwarenessThisCycle = 0;
+        
+        // Keep upgrades and cosmic memory
+        UPGRADES.forEach(u => {
+            this.upgrades[u.id] = { level: 0 };
+        });
+        
+        this.applyStage();
+        return gain;
     }
 
     getAscensionCost(stage) {
@@ -216,7 +295,7 @@ class Universe {
         };
         let base = stageIncomes[this.stage] || 2;
         
-        // Multiplicative boost from quark_density type upgrades
+        // Multiplicative boost from passive upgrades
         base *= Math.pow(2, this.getUpgradeLevel('quark_density'));
         if (this.stage === 'atom') base *= Math.pow(2, this.getUpgradeLevel('electron_orbit'));
         if (this.stage === 'molecule') base *= Math.pow(2, this.getUpgradeLevel('molecular_bond'));
@@ -225,6 +304,9 @@ class Universe {
         if (this.stage === 'life') base *= Math.pow(2, this.getUpgradeLevel('consciousness_matrix'));
         if (this.stage === 'civilization') base *= Math.pow(2, this.getUpgradeLevel('cosmic_expansion'));
         
+        // Apply cosmic memory multiplier
+        base *= this.getCosmicMultiplier();
+        
         return base;
     }
 
@@ -232,6 +314,7 @@ class Universe {
     getCreateBonus() {
         let bonus = 1;
         bonus *= (1 + this.getUpgradeLevel('strong_force') * 1);
+        bonus *= this.getCosmicMultiplier();
         return bonus;
     }
 
@@ -244,6 +327,7 @@ class Universe {
         if (this.stage === 'planet') bonus *= (1 + this.getUpgradeLevel('evolution_accelerator') * 19);
         if (this.stage === 'life') bonus *= (1 + this.getUpgradeLevel('civ_accelerator') * 49);
         if (this.stage === 'civilization') bonus *= (1 + this.getUpgradeLevel('big_crunch') * 99);
+        bonus *= this.getCosmicMultiplier();
         return bonus;
     }
 
@@ -282,7 +366,6 @@ class Universe {
 
         this.particles -= cost;
         
-        // Apply boost from upgrades
         const gained = Math.floor(1 * this.getCreateBonus());
         this.particles += gained;
         this.totalWeightGenerated += gained;
@@ -297,7 +380,6 @@ class Universe {
 
         this.particles -= cost;
         
-        // Base 3 particles, boosted by merge upgrades
         const gained = Math.floor(3 * this.getMergeBonus());
         this.particles += gained;
         this.totalWeightGenerated += gained;
@@ -316,19 +398,6 @@ class Universe {
         return true;
     }
 
-    ascend() {
-        if (!this.canAscend) return false;
-
-        const nextStage = STAGES[this.stageIndex + 1];
-        const cost = this.getAscensionCost(nextStage);
-        
-        this.particles -= cost;
-        this.stageIndex++;
-        this.applyStage();
-
-        return true;
-    }
-
     // Persistence
     save() {
         const data = {
@@ -337,6 +406,10 @@ class Universe {
             existentialWeight: this.existentialWeight,
             totalWeightGenerated: this.totalWeightGenerated,
             upgrades: this.upgrades,
+            cycle: this.cycle,
+            cosmicMemory: this.cosmicMemory,
+            awareness: this.awareness,
+            maxAwarenessThisCycle: this.maxAwarenessThisCycle,
             lastSave: Date.now()
         };
         localStorage.setItem('particleUniverse', JSON.stringify(data));
@@ -354,6 +427,10 @@ class Universe {
             this.existentialWeight = data.existentialWeight || 0;
             this.totalWeightGenerated = data.totalWeightGenerated || 0;
             this.upgrades = data.upgrades || {};
+            this.cycle = data.cycle || 1;
+            this.cosmicMemory = data.cosmicMemory || 0;
+            this.awareness = data.awareness || 0;
+            this.maxAwarenessThisCycle = data.maxAwarenessThisCycle || 0;
             this.lastSave = data.lastSave || Date.now();
 
             // Ensure all upgrades exist
@@ -377,6 +454,10 @@ class Universe {
         this.particles = 1;
         this.existentialWeight = 0;
         this.totalWeightGenerated = 0;
+        this.cycle = 1;
+        this.cosmicMemory = 0;
+        this.awareness = 0;
+        this.maxAwarenessThisCycle = 0;
         UPGRADES.forEach(u => {
             this.upgrades[u.id] = { level: 0 };
         });

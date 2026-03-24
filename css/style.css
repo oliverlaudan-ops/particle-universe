@@ -138,6 +138,28 @@ button:active:not(:disabled) {
     transform: scale(0.97);
 }
 
+/* Cycle-based body styling */
+body.cycle-low {
+    --accent: #7c5ce7;
+    --accent-glow: #9d7cff;
+}
+
+body.cycle-mid {
+    --accent: #5c7ce7;
+    --accent-glow: #7d9dff;
+}
+
+body.cycle-high {
+    --accent: #ce5c5c;
+    --accent-glow: #ff7d7d;
+    animation: subtlePulse 4s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.05); }
+}
+
 #upgrades h3 {
     text-align: center;
     color: var(--text-dim);

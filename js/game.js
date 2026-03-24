@@ -15,8 +15,12 @@ class Game {
             btnCreate: document.getElementById('btn-create'),
             btnMerge: document.getElementById('btn-merge'),
             btnAscend: document.getElementById('btn-ascend'),
+            btnPrestige: document.getElementById('btn-prestige'),
             upgradeList: document.getElementById('upgrade-list'),
-            timeDisplay: document.getElementById('time-display')
+            timeDisplay: document.getElementById('time-display'),
+            cycleDisplay: document.getElementById('cycle'),
+            memoryDisplay: document.getElementById('memory'),
+            awarenessDisplay: document.getElementById('awareness')
         };
 
         this.init();
@@ -29,9 +33,12 @@ class Game {
         // Initial render
         this.render();
         
-        // Show initial narrative
-        Renderer.showNarrative(NARRATIVE.getRandomNarrative(this.universe.stage));
-        Renderer.render(this.universe.stage);
+        // Show initial narrative based on cycle
+        const narrative = this.universe.cycle > 1 
+            ? NARRATIVE.getCycleNarrative(this.universe.cycle)
+            : NARRATIVE.getNarrative(this.universe.stage, this.universe.awareness, this.universe.cycle);
+        Renderer.showNarrative(narrative);
+        Renderer.render(this.universe.stage, this.universe.awareness);
 
         if (loaded) {
             this.elements.timeDisplay.textContent = 'Spielstand geladen.';
@@ -46,12 +53,16 @@ class Game {
 
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+
+        // Apply cycle-based styling
+        this.applyCycleStyling();
     }
 
     bindEvents() {
         this.elements.btnCreate.addEventListener('click', () => this.actionCreate());
         this.elements.btnMerge.addEventListener('click', () => this.actionMerge());
         this.elements.btnAscend.addEventListener('click', () => this.actionAscend());
+        this.elements.btnPrestige?.addEventListener('click', () => this.actionPrestige());
     }
 
     handleKeyboard(e) {
@@ -67,6 +78,11 @@ class Game {
                     this.actionAscend();
                 }
                 break;
+            case 'p':
+                if (this.universe.canPrestige) {
+                    this.actionPrestige();
+                }
+                break;
             case 'r':
                 if (e.ctrlKey || e.metaKey) {
                     // Don't prevent Ctrl+R (browser refresh)
@@ -75,6 +91,7 @@ class Game {
                     this.render();
                     Renderer.showNarrative("Ein neues Universum entsteht...");
                     Renderer.render(this.universe.stage);
+                    this.applyCycleStyling();
                 }
                 break;
         }
@@ -87,7 +104,11 @@ class Game {
             
             // Random chance to show narrative update
             if (Math.random() < 0.1) {
-                Renderer.showNarrative(NARRATIVE.getRandomNarrative(this.universe.stage));
+                Renderer.showNarrative(NARRATIVE.getNarrative(
+                    this.universe.stage, 
+                    this.universe.awareness, 
+                    this.universe.cycle
+                ));
             }
         }
     }
@@ -98,7 +119,11 @@ class Game {
             this.render();
             
             if (Math.random() < 0.15) {
-                Renderer.showNarrative(NARRATIVE.getRandomNarrative(this.universe.stage));
+                Renderer.showNarrative(NARRATIVE.getNarrative(
+                    this.universe.stage, 
+                    this.universe.awareness, 
+                    this.universe.cycle
+                ));
             }
         }
     }
@@ -108,11 +133,49 @@ class Game {
             Renderer.ascendEffect();
             
             setTimeout(() => {
-                Renderer.showNarrative(NARRATIVE.getRandomNarrative(this.universe.stage));
-                Renderer.render(this.universe.stage);
+                Renderer.showNarrative(NARRATIVE.getNarrative(
+                    this.universe.stage, 
+                    this.universe.awareness, 
+                    this.universe.cycle
+                ));
+                Renderer.render(this.universe.stage, this.universe.awareness);
             }, 600);
             
             this.render();
+            this.applyCycleStyling();
+        }
+    }
+
+    actionPrestige() {
+        if (!this.universe.canPrestige) return;
+        
+        const gain = this.universe.prestige();
+        
+        // Show dramatic prestige effect
+        Renderer.glitchEffect(1000);
+        
+        setTimeout(() => {
+            Renderer.showNarrative(NARRATIVE.getCycleNarrative(this.universe.cycle));
+            Renderer.render(this.universe.stage, this.universe.awareness);
+        }, 1000);
+        
+        this.render();
+        this.applyCycleStyling();
+        
+        // Show memory gained
+        this.elements.timeDisplay.textContent = `+${gain} Kosmische Erinnerung gewonnen.`;
+    }
+
+    applyCycleStyling() {
+        const cycle = this.universe.cycle;
+        document.body.classList.remove('cycle-low', 'cycle-mid', 'cycle-high');
+        
+        if (cycle >= 5) {
+            document.body.classList.add('cycle-high');
+        } else if (cycle >= 3) {
+            document.body.classList.add('cycle-mid');
+        } else {
+            document.body.classList.add('cycle-low');
         }
     }
 
@@ -122,27 +185,43 @@ class Game {
         this.elements.weight.textContent = Math.floor(this.universe.existentialWeight).toLocaleString();
         
         const passiveRate = this.universe.getPassiveIncome();
-        this.elements.passiveRate.textContent = `${passiveRate.toFixed(1)}/s`;
+        this.elements.passiveRate.textContent = `${passiveRate.toLocaleString()}/s`;
         
         this.elements.particles.textContent = Math.floor(this.universe.particles).toLocaleString();
+
+        // Update prestige stats
+        this.elements.cycleDisplay.textContent = `Zyklus ${this.universe.cycle}`;
+        this.elements.memoryDisplay.textContent = `${this.universe.cosmicMemory.toFixed(1)}x`;
+        this.elements.awarenessDisplay.textContent = this.universe.awareness;
 
         // Update button states
         const createCost = this.universe.getParticleCost();
         const mergeCost = this.universe.getMergeCost();
 
         this.elements.btnCreate.disabled = !this.universe.canAfford(createCost);
-        this.elements.btnCreate.textContent = `Erschaffen (${createCost})`;
+        this.elements.btnCreate.textContent = `Erschaffen (${Math.floor(createCost).toLocaleString()})`;
 
         this.elements.btnMerge.disabled = !this.universe.canAfford(mergeCost);
-        this.elements.btnMerge.textContent = `Vereinigen (${mergeCost})`;
+        this.elements.btnMerge.textContent = `Vereinigen (${Math.floor(mergeCost).toLocaleString()})`;
 
         this.elements.btnAscend.disabled = !this.universe.canAscend;
         if (this.universe.isMaxStage) {
-            this.elements.btnAscend.textContent = 'Maximum erreicht';
+            this.elements.btnAscend.style.display = 'none';
         } else {
+            this.elements.btnAscend.style.display = '';
             const nextStage = STAGES[this.universe.stageIndex + 1];
             const ascendCost = this.universe.getAscensionCost(nextStage);
-            this.elements.btnAscend.textContent = `Transzendieren (${ascendCost})`;
+            this.elements.btnAscend.textContent = `Transzendieren (${ascendCost.toLocaleString()})`;
+        }
+
+        // Prestige button
+        if (this.universe.canPrestige) {
+            this.elements.btnPrestige.style.display = '';
+            this.elements.btnPrestige.disabled = false;
+            const prestigeGain = this.universe.getPrestigeGain();
+            this.elements.btnPrestige.textContent = `Zyklus beenden (+${prestigeGain} Erinnerung)`;
+        } else {
+            this.elements.btnPrestige.style.display = 'none';
         }
 
         // Render upgrades
@@ -170,7 +249,7 @@ class Game {
                 <div class="upgrade-name">${upgrade.name}</div>
                 <div class="upgrade-desc">${upgrade.description}</div>
                 <div class="upgrade-level">Stufe: ${level}/${upgrade.maxLevel}</div>
-                <div class="upgrade-cost">${isMaxed ? 'MAX' : `Kosten: ${cost}`}</div>
+                <div class="upgrade-cost">${isMaxed ? 'MAX' : `Kosten: ${Math.floor(cost).toLocaleString()}`}</div>
             `;
 
             if (canBuy && !isMaxed) {
