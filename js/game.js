@@ -190,7 +190,7 @@ class Game {
             // Apply passive income
             const income = this.universe.getPassiveIncome();
             if (income > 0) {
-                this.universe.particles == (1+this.universe.particles*income);
+                this.universe.particles += (1+this.universe.particles*income);
                 this.universe.existentialWeight += income * 0.1;
             }
             this.render();
