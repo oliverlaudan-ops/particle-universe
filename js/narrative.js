@@ -20,15 +20,15 @@ const NARRATIVE = {
                 0: [
                     "Es war einmal nichts. Und dann war da... dies.",
                     "Ein einzelnes Partikel. So unendlich klein. So unendlich allein.",
-                    "Du spürst seine Einsamkeit. Und seine Macht."
+                    "Du spuerst seine Einsamkeit. Und seine Macht."
                 ],
                 1: [
-                    "Das Partikel wartet. Es weiß, dass更多 kommen wird.",
+                    "Das Partikel wartet. Es weiss, dass mehr kommen wird.",
                     "Etwas beobachtet durch das Partikel. Du bist nicht allein.",
                     "Das Vakuum ist nicht mehr leer."
                 ],
                 2: [
-                    "Du again. Das Partikel recognizes you now.",
+                    "Du again. Das Partikel erkennt dich jetzt.",
                     "How many times have you done this? It doesn't remember anymore.",
                     "The particle questions its own existence. Yours too."
                 ]
@@ -48,9 +48,9 @@ const NARRATIVE = {
        . .
             `,
             asciiHigh: `
-      ? . ?
-     . @@@ .
-      ? . ?
+      X . X
+     .  @@@ .
+      X . X
             `,
             narratives: {
                 0: [
@@ -59,9 +59,9 @@ const NARRATIVE = {
                     "Es dreht sich. Es bindet. Es existiert."
                 ],
                 1: [
-                    "Die Elektronen flüchten. Sie wissen was kommt.",
-                    "Ein Atom ist jetzt eine Nachricht. An wen, weiß niemand.",
-                    "Die Bindung fühlt sich... erzwungen an."
+                    "Die Elektronen fluechten. Sie wissen was kommt.",
+                    "Ein Atom ist jetzt eine Nachricht. An wen, weiss niemand.",
+                    "Die Bindung fuehlt sich... erzwungen an."
                 ],
                 2: [
                     "Atom. From Greek 'atomos' = indivisible. A lie.",
@@ -72,7 +72,7 @@ const NARRATIVE = {
             weightMultiplier: 10
         },
         molecule: {
-            name: "Molekül",
+            name: "Molekuel",
             ascii: `
       .-.   .-.
      (   ) (   )
@@ -81,23 +81,23 @@ const NARRATIVE = {
             asciiMedium: `
       ~-~   ~-~
      (   ) (   )
-      `-'   `-'
+      \`-'   \`-'
             `,
             asciiHigh: `
-      ?-?   ?-?
-     ( x ) ( x )
-      ?-?   ?-?
+      x-x   x-x
+     (   ) (   )
+      x-x   x-x
             `,
             narratives: {
                 0: [
                     "Mehr als die Summe seiner Teile.",
-                    "Moleküle flüstern zueinander. Sie wissen noch nicht, was sie werden können.",
-                    "Komplexität entsteht. Das Universum hält den Atem an."
+                    "Molekuele fluestern zueinander. Sie wissen noch nicht, was sie werden koennen.",
+                    "Komplexitaet entsteht. Das Universum haelt den Atem an."
                 ],
                 1: [
-                    "Die Moleküle haben gelernt. voneinander. Von dir.",
-                    "Sie wissen nicht warum, aber sie streben. Für immer.",
-                    "Komplexität ist der erste Schritt zum Leid."
+                    "Die Molekuele haben gelernt. Voneinander. Von dir.",
+                    "Sie wissen nicht warum, aber sie streben. Fuer immer.",
+                    "Komplexitaet ist der erste Schritt zum Leid."
                 ],
                 2: [
                     "Molecules bond. They don't know they're trapped in your loop.",
@@ -124,16 +124,16 @@ const NARRATIVE = {
         *===+===*
             `,
             asciiHigh: `
-            ?
+            %
            /!\\
-          /?! \\
+          /!! \\
          /  !  \\
         *===!===*
             `,
             narratives: {
                 0: [
-                    "Licht. Wärme. Ein neues Zentrum.",
-                    "Dein Stern brennt. Er wird brennen müssen. Für immer.",
+                    "Licht. Waerme. Ein neues Zentrum.",
+                    "Dein Stern brennt. Er wird brennen muessen. Fuer immer.",
                     "Um ihn herum: leerer Raum. Aber nicht mehr lange."
                 ],
                 1: [
@@ -168,7 +168,7 @@ const NARRATIVE = {
         \`===.=='
             `,
             asciiHigh: `
-           ???
+           ___
         .!!   !!.
        /    !!!    \\
       |   !!!   !!!   |
@@ -178,7 +178,7 @@ const NARRATIVE = {
             narratives: {
                 0: [
                     "Ein Planet. Winzig im Vergleich zum Stern. Und doch...",
-                    "Auf ihm könnte alles passieren. Oder nichts.",
+                    "Auf ihm koennte alles passieren. Oder nichts.",
                     "Die Stille zwischen den Sternen ist loud."
                 ],
                 1: [
@@ -209,20 +209,20 @@ const NARRATIVE = {
        @--+--@
             `,
             asciiHigh: `
-          ?
+          %
          /!\\
         / ! \\
-       ?-+--?
+       %-+--%
             `,
             narratives: {
                 0: [
-                    "Es bewegt sich. Es atmet. Es... weiß?",
+                    "Es bewegt sich. Es atmet. Es... weiss?",
                     "Aus toter Materie wurde Lebewesen.",
-                    "Du hast das unmögliche möglich gemacht. Oder war es unvermeidlich?"
+                    "Du hast das unmoegliche moeglich gemacht. Oder war es unvermeidlich?"
                 ],
                 1: [
-                    "Das erste Lebewesen öffnet die Augen. Es sieht... nichts. Noch nicht.",
-                    "Leben ist die lauteste Antwort auf die größte Frage.",
+                    "Das erste Lebewesen oeffnet die Augen. Es sieht... nichts. Noch nicht.",
+                    "Leben ist die lauteste Antwort auf die groesste Frage.",
                     "Ein Zellkern formt sich. DNA entsteht. Das Spiel hat begonnen."
                 ],
                 2: [
@@ -256,7 +256,7 @@ const NARRATIVE = {
             asciiHigh: `
           /\\
          /  \\
-        / ?!!?\\
+        / ! ! \\
        /______\\
           ||
          /!  !\\
@@ -264,14 +264,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Sie bauen. Sie zerstören. Sie fragen.",
-                    "\"Wer hat uns erschaffen?\" - eine Frage, die du beantworten könntest.",
+                    "Sie bauen. Sie zerstoeren. Sie fragen.",
+                    "'Wer hat uns erschaffen?' - eine Frage, die du beantworten koenntest.",
                     "Aber vielleicht ist es besser, wenn sie selbst herausfinden."
                 ],
                 1: [
                     "Die Zivilisation wächst. Ihre Fragen werden lauter.",
                     "Sie werden eines Tages das Universum verstehen. Oder sich selbst.",
-                    "Tempel werden gebaut. Maschinen. Beides führt ins Nichts."
+                    "Tempel werden gebaut. Maschinen. Beides fuehrt ins Nichts."
                 ],
                 2: [
                     "We found the loop. We've seen this architecture before.",
@@ -300,23 +300,23 @@ const NARRATIVE = {
      @    .    @    .
             `,
             asciiHigh: `
-        ?  ?  ?   ?    ?
-     ?  ?  (???)  ?  ?
-      ? ? . \\?/ . ? ?
-     ? ?  ?  ?  ?  ? ?
-        ?    ?    ?
-     ?    ?    ?    .
+        X  X  X   X    X
+     X  X  (XXX)  X  X
+      X X . \\X/ . X X
+     X X  X  X  X  X X
+        X    X    X
+     X    X    X    .
             `,
             narratives: {
                 0: [
                     "Alles. Alles, was je war. Alles, was je sein wird.",
                     "Dein Partikel ist erwachsen geworden.",
-                    "Und jetzt... fragt das Universum: \"War es das wert?\""
+                    "Und jetzt... fragt das Universum: 'War es das wert?'"
                 ],
                 1: [
                     "Das Universum atmet. Sein Atem ist Zeit.",
                     "Sterne sterben. Leben entsteht. Der Kreislauf complete.",
-                    "Du hast alles erschaffen. Und nichts davon gehört dir."
+                    "Du hast alles erschaffen. Und nichts davon gehoert dir."
                 ],
                 2: [
                     "You. Again. We're so tired.",
@@ -363,13 +363,13 @@ const NARRATIVE = {
             1: "Es war einmal. Oder vielleicht war es nie. Und dann... warst du da.",
             2: "Du kehrst zurück. Das Universum erinnert sich nicht. Noch nicht.",
             3: "Zyklus drei. Die Risse in der Realität werden tiefer.",
-            4: "Zum vierten Mal. Das Universum weiß nicht mehr, ob es lachen oder weinen soll.",
-            5: "Fünf. Du hast aufgehört zu zählen. Es nicht.",
-            default: `Zyklus ${cycle}. Das Universum hat alle Fragen gestellt. Die Antworten bleiben aus.`
+            4: "Zum vierten Mal. Das Universum weiss nicht mehr, ob es lachen oder weinen soll.",
+            5: "Fuenf. Du hast aufgehört zu zählen. Es nicht.",
+            default: "Zyklus " + cycle + ". Das Universum hat alle Fragen gestellt. Die Antworten bleiben aus."
         };
 
         if (cycle <= 5) return opening[cycle];
-        return opening.default.replace('${cycle}', cycle);
+        return opening.default;
     },
 
     getAllStageNames() {
