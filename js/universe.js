@@ -4,81 +4,141 @@ const UPGRADES = [
     {
         id: 'quark_density',
         name: 'Quark Dichte',
-        description: '+50% passives Einkommen pro Stufe',
-        baseCost: 10,
-        costMultiplier: 1.5,
-        effect: { type: 'passive_boost', value: 0.5 },
+        description: '+100% passives Einkommen',
+        baseCost: 20,
+        costMultiplier: 3,
+        effect: { type: 'passive_mult', value: 2 },
         requiresStage: 'particle',
-        maxLevel: 10
+        maxLevel: 5
+    },
+    {
+        id: 'strong_force',
+        name: 'Starke Kraft',
+        description: 'Erhöht Erschaffen-Ertrag',
+        baseCost: 50,
+        costMultiplier: 2.5,
+        effect: { type: 'create_boost', value: 2 },
+        requiresStage: 'particle',
+        maxLevel: 3
     },
     {
         id: 'electron_orbit',
         name: 'Elektronen Umlaufbahn',
-        description: 'Stabilisiert Atombildung',
-        baseCost: 100,
-        costMultiplier: 2,
-        effect: { type: 'merge_boost', value: 1 },
+        description: '+100% passives Einkommen',
+        baseCost: 200,
+        costMultiplier: 3,
+        effect: { type: 'passive_mult', value: 2 },
         requiresStage: 'atom',
         maxLevel: 5
     },
     {
+        id: 'fusion_core',
+        name: 'Fusionskern',
+        description: 'Erhöht Vereinigen-Ertrag',
+        baseCost: 400,
+        costMultiplier: 3,
+        effect: { type: 'merge_boost', value: 3 },
+        requiresStage: 'atom',
+        maxLevel: 3
+    },
+    {
         id: 'molecular_bond',
         name: 'Molekulare Bindung',
-        description: 'Beschleunigt Molekülbildung',
-        baseCost: 500,
-        costMultiplier: 2,
-        effect: { type: 'merge_boost', value: 2 },
+        description: '+100% passives Einkommen',
+        baseCost: 2000,
+        costMultiplier: 4,
+        effect: { type: 'passive_mult', value: 2 },
         requiresStage: 'molecule',
         maxLevel: 5
     },
     {
+        id: 'stellar_nucleus',
+        name: 'Stellarer Kern',
+        description: 'Erhöht Vereinigen-Ertrag',
+        baseCost: 5000,
+        costMultiplier: 4,
+        effect: { type: 'merge_boost', value: 5 },
+        requiresStage: 'molecule',
+        maxLevel: 3
+    },
+    {
         id: 'stellar_fusion',
         name: 'Stellare Fusion',
-        description: 'Steigert Sternenenergie',
-        baseCost: 2000,
-        costMultiplier: 2.5,
-        effect: { type: 'star_boost', value: 3 },
+        description: '+100% passives Einkommen',
+        baseCost: 25000,
+        costMultiplier: 5,
+        effect: { type: 'passive_mult', value: 2 },
         requiresStage: 'star',
         maxLevel: 5
     },
     {
+        id: 'planetary_core',
+        name: 'Planetarer Kern',
+        description: 'Erhöht Vereinigen-Ertrag',
+        baseCost: 80000,
+        costMultiplier: 5,
+        effect: { type: 'merge_boost', value: 10 },
+        requiresStage: 'star',
+        maxLevel: 3
+    },
+    {
         id: 'tectonic_force',
         name: 'Tektonische Kraft',
-        description: 'Formt Planetoberfläche',
-        baseCost: 10000,
-        costMultiplier: 3,
-        effect: { type: 'planet_boost', value: 2 },
+        description: '+100% passives Einkommen',
+        baseCost: 150000,
+        costMultiplier: 6,
+        effect: { type: 'passive_mult', value: 2 },
         requiresStage: 'planet',
-        maxLevel: 3
+        maxLevel: 5
     },
     {
         id: 'evolution_accelerator',
         name: 'Evolutionsbeschleuniger',
-        description: 'Fördert Lebensentstehung',
-        baseCost: 50000,
-        costMultiplier: 4,
-        effect: { type: 'life_boost', value: 2 },
-        requiresStage: 'life',
+        description: 'Erhöht Vereinigen-Ertrag',
+        baseCost: 500000,
+        costMultiplier: 6,
+        effect: { type: 'merge_boost', value: 20 },
+        requiresStage: 'planet',
         maxLevel: 3
     },
     {
         id: 'consciousness_matrix',
         name: 'Bewusstseins-Matrix',
-        description: 'Entwickelt Intelligenz',
-        baseCost: 250000,
-        costMultiplier: 5,
-        effect: { type: 'civ_boost', value: 2 },
-        requiresStage: 'civilization',
+        description: '+100% passives Einkommen',
+        baseCost: 2000000,
+        costMultiplier: 8,
+        effect: { type: 'passive_mult', value: 2 },
+        requiresStage: 'life',
+        maxLevel: 5
+    },
+    {
+        id: 'civ_accelerator',
+        name: 'Zivilisations-Beschleuniger',
+        description: 'Erhöht Vereinigen-Ertrag',
+        baseCost: 8000000,
+        costMultiplier: 8,
+        effect: { type: 'merge_boost', value: 50 },
+        requiresStage: 'life',
         maxLevel: 3
     },
     {
         id: 'cosmic_expansion',
         name: 'Kosmische Expansion',
-        description: 'Dehnt das Universum aus',
-        baseCost: 1000000,
-        costMultiplier: 6,
-        effect: { type: 'universe_boost', value: 2 },
-        requiresStage: 'universe',
+        description: '+100% passives Einkommen',
+        baseCost: 50000000,
+        costMultiplier: 10,
+        effect: { type: 'passive_mult', value: 2 },
+        requiresStage: 'civilization',
+        maxLevel: 5
+    },
+    {
+        id: 'big_crunch',
+        name: 'Big Crunch',
+        description: 'Erhöht Vereinigen-Ertrag massiv',
+        baseCost: 200000000,
+        costMultiplier: 10,
+        effect: { type: 'merge_boost', value: 100 },
+        requiresStage: 'civilization',
         maxLevel: 3
     }
 ];
@@ -120,46 +180,71 @@ class Universe {
 
     getAscensionCost(stage) {
         const baseCosts = {
-            particle: 100,
-            atom: 1000,
-            molecule: 10000,
-            star: 100000,
-            planet: 1000000,
-            life: 10000000,
-            civilization: 100000000,
+            particle: 50,
+            atom: 300,
+            molecule: 2000,
+            star: 15000,
+            planet: 150000,
+            life: 2000000,
+            civilization: 30000000,
             universe: Infinity
         };
         return baseCosts[stage] || Infinity;
     }
 
     getParticleCost() {
-        const baseCost = 1; // Start cheap, scales with particles owned
-        return Math.floor(baseCost * Math.pow(1.05, this.particles));
+        const baseCost = 1;
+        return Math.floor(baseCost * Math.pow(1.02, this.particles));
     }
 
     getMergeCost() {
-        const baseCost = 5;
-        return Math.floor(baseCost * Math.pow(1.08, this.particles));
+        const baseCost = 3;
+        return Math.floor(baseCost * Math.pow(1.04, this.particles));
     }
 
     // Passive income per second based on stage
     getPassiveIncome() {
         const stageIncomes = {
-            particle: 0.5,
-            atom: 2,
-            molecule: 8,
-            star: 30,
-            planet: 100,
-            life: 400,
-            civilization: 2000,
-            universe: 10000
+            particle: 2,
+            atom: 10,
+            molecule: 50,
+            star: 200,
+            planet: 1000,
+            life: 8000,
+            civilization: 80000,
+            universe: 1000000
         };
-        let base = stageIncomes[this.stage] || 1;
+        let base = stageIncomes[this.stage] || 2;
         
-        // Boost from upgrades
-        base *= (1 + this.getUpgradeLevel('quark_density') * 0.5);
+        // Multiplicative boost from quark_density type upgrades
+        base *= Math.pow(2, this.getUpgradeLevel('quark_density'));
+        if (this.stage === 'atom') base *= Math.pow(2, this.getUpgradeLevel('electron_orbit'));
+        if (this.stage === 'molecule') base *= Math.pow(2, this.getUpgradeLevel('molecular_bond'));
+        if (this.stage === 'star') base *= Math.pow(2, this.getUpgradeLevel('stellar_fusion'));
+        if (this.stage === 'planet') base *= Math.pow(2, this.getUpgradeLevel('tectonic_force'));
+        if (this.stage === 'life') base *= Math.pow(2, this.getUpgradeLevel('consciousness_matrix'));
+        if (this.stage === 'civilization') base *= Math.pow(2, this.getUpgradeLevel('cosmic_expansion'));
         
         return base;
+    }
+
+    // Bonus for manual create action
+    getCreateBonus() {
+        let bonus = 1;
+        bonus *= (1 + this.getUpgradeLevel('strong_force') * 1);
+        return bonus;
+    }
+
+    // Bonus for manual merge action
+    getMergeBonus() {
+        let bonus = 1;
+        if (this.stage === 'atom') bonus *= (1 + this.getUpgradeLevel('fusion_core') * 2);
+        if (this.stage === 'molecule') bonus *= (1 + this.getUpgradeLevel('stellar_nucleus') * 4);
+        if (this.stage === 'star') bonus *= (1 + this.getUpgradeLevel('planetary_core') * 9);
+        if (this.stage === 'planet') bonus *= (1 + this.getUpgradeLevel('evolution_accelerator') * 19);
+        if (this.stage === 'life') bonus *= (1 + this.getUpgradeLevel('civ_accelerator') * 49);
+        if (this.stage === 'civilization') bonus *= (1 + this.getUpgradeLevel('big_crunch') * 99);
+        return bonus;
     }
 
     getUpgradeCost(upgradeId) {
@@ -198,14 +283,10 @@ class Universe {
         this.particles -= cost;
         
         // Apply boost from upgrades
-        let boost = 1;
-        if (this.stage === 'particle') {
-            boost = 1 + (this.getUpgradeLevel('quark_density') * 1);
-        }
-        
-        this.particles += Math.floor(boost);
-        this.totalWeightGenerated += 1;
-        this.existentialWeight += 1;
+        const gained = Math.floor(1 * this.getCreateBonus());
+        this.particles += gained;
+        this.totalWeightGenerated += gained;
+        this.existentialWeight += gained;
 
         return true;
     }
@@ -216,15 +297,8 @@ class Universe {
 
         this.particles -= cost;
         
-        // Apply boost from upgrades
-        let boost = 1;
-        if (this.stage === 'atom') {
-            boost = 1 + (this.getUpgradeLevel('electron_orbit') * 0.5);
-        } else if (this.stage === 'molecule') {
-            boost = 1 + (this.getUpgradeLevel('molecular_bond') * 0.5);
-        }
-
-        const gained = Math.floor(2 * boost);
+        // Base 3 particles, boosted by merge upgrades
+        const gained = Math.floor(3 * this.getMergeBonus());
         this.particles += gained;
         this.totalWeightGenerated += gained;
         this.existentialWeight += gained;
