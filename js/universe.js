@@ -352,7 +352,7 @@ class Universe {
     }
 
     getUpgradeLevel(upgradeId) {
-        return this.upgrades[upgradeId]?.level || 0;
+        return (this.upgrades[upgradeId] ? this.upgrades[upgradeId].level : 0) || 0;
     }
 
     applyStage() {

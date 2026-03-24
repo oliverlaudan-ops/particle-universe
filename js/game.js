@@ -62,7 +62,7 @@ class Game {
         this.elements.btnCreate.addEventListener('click', () => this.actionCreate());
         this.elements.btnMerge.addEventListener('click', () => this.actionMerge());
         this.elements.btnAscend.addEventListener('click', () => this.actionAscend());
-        this.elements.btnPrestige?.addEventListener('click', () => this.actionPrestige());
+        this.elements.btnPrestige.addEventListener('click', () => this.actionPrestige());
     }
 
     handleKeyboard(e) {
