@@ -41,7 +41,7 @@ class Game {
         Renderer.render(this.universe.stage, this.universe.awareness);
 
         if (loaded) {
-            this.elements.timeDisplay.textContent = 'Spielstand geladen.';
+            this.elements.timeDisplay.textContent = 'Game loaded.';
         }
 
         // Bind event listeners
