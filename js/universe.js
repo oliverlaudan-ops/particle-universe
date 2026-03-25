@@ -266,9 +266,9 @@ class Universe {
             planet: 150000,
             life: 2000000,
             civilization: 30000000,
-            universe: Infinity
+            universe: 50000000  // Can reach universe, then prestige
         };
-        return baseCosts[stage] || Infinity;
+        return baseCosts[stage] || 100000000;
     }
 
     getParticleCost() {

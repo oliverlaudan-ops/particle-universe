@@ -211,7 +211,13 @@ class Game {
             this.elements.btnAscend.style.display = '';
             const nextStage = STAGES[this.universe.stageIndex + 1];
             const ascendCost = this.universe.getAscensionCost(nextStage);
-            this.elements.btnAscend.textContent = `Transzendieren (${ascendCost.toLocaleString()})`;
+            let costStr;
+            if (ascendCost === Infinity || isNaN(ascendCost)) {
+                costStr = 'MAX';
+            } else {
+                costStr = Math.floor(ascendCost).toLocaleString();
+            }
+            this.elements.btnAscend.textContent = `Transzendieren (${costStr})`;
         }
 
         // Prestige button
