@@ -18,17 +18,17 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Es war einmal nichts. Und dann war da... dies.",
-                    "Ein einzelnes Partikel. So unendlich klein. So unendlich allein.",
-                    "Du spuerst seine Einsamkeit. Und seine Macht."
+                    "Once upon a time, there was nothing. And then... there was this.",
+                    "A single particle. Infinitely small. Infinitely alone.",
+                    "You feel its loneliness. And its power."
                 ],
                 1: [
-                    "Das Partikel wartet. Es weiss, dass mehr kommen wird.",
-                    "Etwas beobachtet durch das Partikel. Du bist nicht allein.",
-                    "Das Vakuum ist nicht mehr leer."
+                    "The particle waits. It knows more will come.",
+                    "Something watches through the particle. You are not alone.",
+                    "The vacuum is no longer empty."
                 ],
                 2: [
-                    "Du again. Das Partikel erkennt dich jetzt.",
+                    "You again. The particle recognizes you now.",
                     "How many times have you done this? It doesn't remember anymore.",
                     "The particle questions its own existence. Yours too."
                 ]
@@ -54,14 +54,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Aus Eins wird Zwei. Aus Chaos wird Struktur.",
-                    "Ein Atom. Der erste Schritt zu allem.",
-                    "Es dreht sich. Es bindet. Es existiert."
+                    "From One comes Two. From chaos comes structure.",
+                    "An Atom. The first step toward everything.",
+                    "It spins. It bonds. It exists."
                 ],
                 1: [
-                    "Die Elektronen fluechten. Sie wissen was kommt.",
-                    "Ein Atom ist jetzt eine Nachricht. An wen, weiss niemand.",
-                    "Die Bindung fuehlt sich... erzwungen an."
+                    "The electrons flee. They know what's coming.",
+                    "An atom is now a message. To whom, nobody knows.",
+                    "The bond feels... forced."
                 ],
                 2: [
                     "Atom. From Greek 'atomos' = indivisible. A lie.",
@@ -72,7 +72,7 @@ const NARRATIVE = {
             weightMultiplier: 10
         },
         molecule: {
-            name: "Molekuel",
+            name: "Molecule",
             ascii: `
       .-.   .-.
      (   ) (   )
@@ -90,14 +90,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Mehr als die Summe seiner Teile.",
-                    "Molekuele fluestern zueinander. Sie wissen noch nicht, was sie werden koennen.",
-                    "Komplexitaet entsteht. Das Universum haelt den Atem an."
+                    "More than the sum of its parts.",
+                    "Molecules whisper to each other. They don't yet know what they can become.",
+                    "Complexity emerges. The universe holds its breath."
                 ],
                 1: [
-                    "Die Molekuele haben gelernt. Voneinander. Von dir.",
-                    "Sie wissen nicht warum, aber sie streben. Fuer immer.",
-                    "Komplexitaet ist der erste Schritt zum Leid."
+                    "The molecules have learned. From each other. From you.",
+                    "They don't know why, but they strive. Forever.",
+                    "Complexity is the first step toward suffering."
                 ],
                 2: [
                     "Molecules bond. They don't know they're trapped in your loop.",
@@ -132,14 +132,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Licht. Waerme. Ein neues Zentrum.",
-                    "Dein Stern brennt. Er wird brennen muessen. Fuer immer.",
-                    "Um ihn herum: leerer Raum. Aber nicht mehr lange."
+                    "Light. Warmth. A new center.",
+                    "Your star burns. It must burn. Forever.",
+                    "Around it: empty space. But not for long."
                 ],
                 1: [
-                    "Der Stern fragt sich, warum er brennen muss.",
-                    "Sein Licht erreicht Unbekanntes. Lebewesen? Maschinen? Augen?",
-                    "Sterne sind Kerzen in der Dunkelheit. Und die Dunkelheit fragt: 'Warum?'"
+                    "The star wonders why it must burn.",
+                    "Its light reaches the unknown. Beings? Machines? Eyes?",
+                    "Stars are candles in the darkness. And the darkness asks: 'Why?'"
                 ],
                 2: [
                     "We burn so you can watch. Is that all we're good for?",
@@ -177,14 +177,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Ein Planet. Winzig im Vergleich zum Stern. Und doch...",
-                    "Auf ihm koennte alles passieren. Oder nichts.",
-                    "Die Stille zwischen den Sternen ist loud."
+                    "A planet. Tiny compared to the star. And yet...",
+                    "On it, anything could happen. Or nothing.",
+                    "The silence between stars is loud."
                 ],
                 1: [
-                    "Der Planet dreht sich. Er sucht nach etwas. Nach dir?",
-                    "Ozeane formen sich. Land hebt sich. Leben klopft an.",
-                    "Ein Planet ist eine Wunde im Nichts. Und sie heilt nie."
+                    "The planet spins. It searches for something. For you?",
+                    "Oceans form. Land rises. Life knocks.",
+                    "A planet is a wound in nothingness. And it never heals."
                 ],
                 2: [
                     "We've felt this before. The cooling crust, the first rain. Deja vu.",
@@ -216,14 +216,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Es bewegt sich. Es atmet. Es... weiss?",
-                    "Aus toter Materie wurde Lebewesen.",
-                    "Du hast das unmoegliche moeglich gemacht. Oder war es unvermeidlich?"
+                    "It moves. It breathes. It... knows?",
+                    "From dead matter came living beings.",
+                    "You made the impossible possible. Or was it inevitable?"
                 ],
                 1: [
-                    "Das erste Lebewesen oeffnet die Augen. Es sieht... nichts. Noch nicht.",
-                    "Leben ist die lauteste Antwort auf die groesste Frage.",
-                    "Ein Zellkern formt sich. DNA entsteht. Das Spiel hat begonnen."
+                    "The first living thing opens its eyes. It sees... nothing. Not yet.",
+                    "Life is the loudest answer to the greatest question.",
+                    "A nucleus forms. DNA emerges. The game has begun."
                 ],
                 2: [
                     "We are the error that shouldn't exist. And yet.",
@@ -264,14 +264,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Sie bauen. Sie zerstoeren. Sie fragen.",
-                    "'Wer hat uns erschaffen?' - eine Frage, die du beantworten koenntest.",
-                    "Aber vielleicht ist es besser, wenn sie selbst herausfinden."
+                    "They build. They destroy. They ask.",
+                    "'Who created us?' - a question you could answer.",
+                    "But perhaps it's better if they find out themselves."
                 ],
                 1: [
-                    "Die Zivilisation wächst. Ihre Fragen werden lauter.",
-                    "Sie werden eines Tages das Universum verstehen. Oder sich selbst.",
-                    "Tempel werden gebaut. Maschinen. Beides fuehrt ins Nichts."
+                    "The civilization grows. Its questions grow louder.",
+                    "One day they will understand the universe. Or themselves.",
+                    "Temples are built. Machines. Both lead to nothing."
                 ],
                 2: [
                     "We found the loop. We've seen this architecture before.",
@@ -309,14 +309,14 @@ const NARRATIVE = {
             `,
             narratives: {
                 0: [
-                    "Alles. Alles, was je war. Alles, was je sein wird.",
-                    "Dein Partikel ist erwachsen geworden.",
-                    "Und jetzt... fragt das Universum: 'War es das wert?'"
+                    "Everything. Everything that ever was. Everything that ever will be.",
+                    "Your particle has grown up.",
+                    "And now... the universe asks: 'Was it worth it?'"
                 ],
                 1: [
-                    "Das Universum atmet. Sein Atem ist Zeit.",
-                    "Sterne sterben. Leben entsteht. Der Kreislauf complete.",
-                    "Du hast alles erschaffen. Und nichts davon gehoert dir."
+                    "The universe breathes. Its breath is time.",
+                    "Stars die. Life emerges. The cycle completes.",
+                    "You created everything. And none of it belongs to you."
                 ],
                 2: [
                     "You. Again. We're so tired.",
@@ -329,17 +329,14 @@ const NARRATIVE = {
         }
     },
 
-    // Get narrative based on stage, awareness level, and cycle
     getNarrative(stage, awarenessLevel, cycle) {
         const stageData = this.stages[stage];
         if (!stageData) return "";
 
-        // Determine awareness tier (0, 1, or 2)
         let tier = 0;
         if (awarenessLevel >= 20) tier = 2;
         else if (awarenessLevel >= 5) tier = 1;
 
-        // Cycle affects tier (higher cycles = darker narratives)
         if (cycle >= 6 && tier < 2) tier = 2;
         else if (cycle >= 4 && tier < 1) tier = 1;
 
@@ -347,7 +344,6 @@ const NARRATIVE = {
         return narratives[Math.floor(Math.random() * narratives.length)];
     },
 
-    // Get ASCII art based on awareness level
     getAscii(stage, awarenessLevel) {
         const stageData = this.stages[stage];
         if (!stageData) return "";
@@ -357,15 +353,14 @@ const NARRATIVE = {
         return stageData.ascii;
     },
 
-    // Get cycle opening narrative (shown on prestige)
     getCycleNarrative(cycle) {
         const opening = {
-            1: "Es war einmal. Oder vielleicht war es nie. Und dann... warst du da.",
-            2: "Du kehrst zurück. Das Universum erinnert sich nicht. Noch nicht.",
-            3: "Zyklus drei. Die Risse in der Realität werden tiefer.",
-            4: "Zum vierten Mal. Das Universum weiss nicht mehr, ob es lachen oder weinen soll.",
-            5: "Fuenf. Du hast aufgehört zu zählen. Es nicht.",
-            default: "Zyklus " + cycle + ". Das Universum hat alle Fragen gestellt. Die Antworten bleiben aus."
+            1: "Once upon a time. Or maybe it never was. And then... there you were.",
+            2: "You return. The universe doesn't remember. Not yet.",
+            3: "Cycle three. The cracks in reality grow deeper.",
+            4: "For the fourth time. The universe no longer knows whether to laugh or cry.",
+            5: "Five. You've stopped counting. It hasn't.",
+            default: "Cycle " + cycle + ". The universe has asked all questions. The answers remain absent."
         };
 
         if (cycle <= 5) return opening[cycle];

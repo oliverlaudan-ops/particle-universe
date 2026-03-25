@@ -1,6 +1,5 @@
 const STAGES = NARRATIVE.getAllStageNames();
 
-// Awareness gained per stage (Fibonacci-ish)
 const AWARENESS_MAP = {
     particle: 0,
     atom: 1,
@@ -15,8 +14,8 @@ const AWARENESS_MAP = {
 const UPGRADES = [
     {
         id: 'quark_density',
-        name: 'Quark Dichte',
-        description: '+100% passives Einkommen',
+        name: 'Quark Density',
+        description: '+100% passive income',
         baseCost: 20,
         costMultiplier: 3,
         effect: { type: 'passive_mult', value: 2 },
@@ -25,8 +24,8 @@ const UPGRADES = [
     },
     {
         id: 'strong_force',
-        name: 'Starke Kraft',
-        description: 'Erhöht Erschaffen-Ertrag',
+        name: 'Strong Force',
+        description: 'Increases Create yield',
         baseCost: 50,
         costMultiplier: 2.5,
         effect: { type: 'create_boost', value: 2 },
@@ -35,8 +34,8 @@ const UPGRADES = [
     },
     {
         id: 'electron_orbit',
-        name: 'Elektronen Umlaufbahn',
-        description: '+100% passives Einkommen',
+        name: 'Electron Orbit',
+        description: '+100% passive income',
         baseCost: 200,
         costMultiplier: 3,
         effect: { type: 'passive_mult', value: 2 },
@@ -45,8 +44,8 @@ const UPGRADES = [
     },
     {
         id: 'fusion_core',
-        name: 'Fusionskern',
-        description: 'Erhöht Vereinigen-Ertrag',
+        name: 'Fusion Core',
+        description: 'Increases Merge yield',
         baseCost: 400,
         costMultiplier: 3,
         effect: { type: 'merge_boost', value: 3 },
@@ -55,8 +54,8 @@ const UPGRADES = [
     },
     {
         id: 'molecular_bond',
-        name: 'Molekulare Bindung',
-        description: '+100% passives Einkommen',
+        name: 'Molecular Bond',
+        description: '+100% passive income',
         baseCost: 2000,
         costMultiplier: 4,
         effect: { type: 'passive_mult', value: 2 },
@@ -65,8 +64,8 @@ const UPGRADES = [
     },
     {
         id: 'stellar_nucleus',
-        name: 'Stellarer Kern',
-        description: 'Erhöht Vereinigen-Ertrag',
+        name: 'Stellar Nucleus',
+        description: 'Increases Merge yield',
         baseCost: 5000,
         costMultiplier: 4,
         effect: { type: 'merge_boost', value: 5 },
@@ -75,8 +74,8 @@ const UPGRADES = [
     },
     {
         id: 'stellar_fusion',
-        name: 'Stellare Fusion',
-        description: '+100% passives Einkommen',
+        name: 'Stellar Fusion',
+        description: '+100% passive income',
         baseCost: 25000,
         costMultiplier: 5,
         effect: { type: 'passive_mult', value: 2 },
@@ -85,8 +84,8 @@ const UPGRADES = [
     },
     {
         id: 'planetary_core',
-        name: 'Planetarer Kern',
-        description: 'Erhöht Vereinigen-Ertrag',
+        name: 'Planetary Core',
+        description: 'Increases Merge yield',
         baseCost: 80000,
         costMultiplier: 5,
         effect: { type: 'merge_boost', value: 10 },
@@ -95,8 +94,8 @@ const UPGRADES = [
     },
     {
         id: 'tectonic_force',
-        name: 'Tektonische Kraft',
-        description: '+100% passives Einkommen',
+        name: 'Tectonic Force',
+        description: '+100% passive income',
         baseCost: 150000,
         costMultiplier: 6,
         effect: { type: 'passive_mult', value: 2 },
@@ -105,8 +104,8 @@ const UPGRADES = [
     },
     {
         id: 'evolution_accelerator',
-        name: 'Evolutionsbeschleuniger',
-        description: 'Erhöht Vereinigen-Ertrag',
+        name: 'Evolution Accelerator',
+        description: 'Increases Merge yield',
         baseCost: 500000,
         costMultiplier: 6,
         effect: { type: 'merge_boost', value: 20 },
@@ -115,8 +114,8 @@ const UPGRADES = [
     },
     {
         id: 'consciousness_matrix',
-        name: 'Bewusstseins-Matrix',
-        description: '+100% passives Einkommen',
+        name: 'Consciousness Matrix',
+        description: '+100% passive income',
         baseCost: 2000000,
         costMultiplier: 8,
         effect: { type: 'passive_mult', value: 2 },
@@ -125,8 +124,8 @@ const UPGRADES = [
     },
     {
         id: 'civ_accelerator',
-        name: 'Zivilisations-Beschleuniger',
-        description: 'Erhöht Vereinigen-Ertrag',
+        name: 'Civilization Accelerator',
+        description: 'Increases Merge yield',
         baseCost: 8000000,
         costMultiplier: 8,
         effect: { type: 'merge_boost', value: 50 },
@@ -135,8 +134,8 @@ const UPGRADES = [
     },
     {
         id: 'cosmic_expansion',
-        name: 'Kosmische Expansion',
-        description: '+100% passives Einkommen',
+        name: 'Cosmic Expansion',
+        description: '+100% passive income',
         baseCost: 50000000,
         costMultiplier: 10,
         effect: { type: 'passive_mult', value: 2 },
@@ -146,7 +145,7 @@ const UPGRADES = [
     {
         id: 'big_crunch',
         name: 'Big Crunch',
-        description: 'Erhöht Vereinigen-Ertrag massiv',
+        description: 'Massively increases Merge yield',
         baseCost: 200000000,
         costMultiplier: 10,
         effect: { type: 'merge_boost', value: 100 },
@@ -164,13 +163,11 @@ class Universe {
         this.upgrades = {};
         this.lastSave = Date.now();
 
-        // Prestige system
         this.cycle = 1;
         this.cosmicMemory = 0;
         this.awareness = 0;
         this.maxAwarenessThisCycle = 0;
 
-        // Initialize upgrade levels
         UPGRADES.forEach(u => {
             this.upgrades[u.id] = { level: 0 };
         });
@@ -225,7 +222,6 @@ class Universe {
         this.stageIndex++;
         this.applyStage();
         
-        // Gain awareness
         const awarenessGain = AWARENESS_MAP[this.stage] || 0;
         this.awareness += awarenessGain;
         this.maxAwarenessThisCycle = Math.max(this.maxAwarenessThisCycle, this.awareness);
@@ -240,7 +236,6 @@ class Universe {
         this.cosmicMemory += gain;
         this.cycle++;
         
-        // Reset cycle progress
         this.stageIndex = 0;
         this.particles = 1;
         this.existentialWeight = 0;
@@ -248,7 +243,6 @@ class Universe {
         this.awareness = 0;
         this.maxAwarenessThisCycle = 0;
         
-        // Keep upgrades and cosmic memory
         UPGRADES.forEach(u => {
             this.upgrades[u.id] = { level: 0 };
         });
@@ -266,13 +260,12 @@ class Universe {
             planet: 150000,
             life: 2000000,
             civilization: 30000000,
-            universe: 50000000  // Can reach universe, then prestige
+            universe: 50000000
         };
         return baseCosts[stage] || 100000000;
     }
 
     getParticleCost() {
-        // Scale with log of particles, not linear
         const baseCost = 1;
         const logParticles = Math.log(this.particles + 1) / Math.log(1.5);
         return Math.floor(baseCost + logParticles);
@@ -284,7 +277,6 @@ class Universe {
         return Math.floor(baseCost + logParticles);
     }
 
-    // Passive income per second based on stage
     getPassiveIncome() {
         const stageIncomes = {
             particle: 2,
@@ -298,7 +290,6 @@ class Universe {
         };
         let base = stageIncomes[this.stage] || 2;
         
-        // Multiplicative boost from passive upgrades
         base *= Math.pow(2, this.getUpgradeLevel('quark_density'));
         if (this.stage === 'atom') base *= Math.pow(2, this.getUpgradeLevel('electron_orbit'));
         if (this.stage === 'molecule') base *= Math.pow(2, this.getUpgradeLevel('molecular_bond'));
@@ -307,13 +298,11 @@ class Universe {
         if (this.stage === 'life') base *= Math.pow(2, this.getUpgradeLevel('consciousness_matrix'));
         if (this.stage === 'civilization') base *= Math.pow(2, this.getUpgradeLevel('cosmic_expansion'));
         
-        // Apply cosmic memory multiplier
         base *= this.getCosmicMultiplier();
         
         return base;
     }
 
-    // Bonus for manual create action
     getCreateBonus() {
         let bonus = 1;
         bonus *= (1 + this.getUpgradeLevel('strong_force') * 1);
@@ -321,7 +310,6 @@ class Universe {
         return bonus;
     }
 
-    // Bonus for manual merge action
     getMergeBonus() {
         let bonus = 1;
         if (this.stage === 'atom') bonus *= (1 + this.getUpgradeLevel('fusion_core') * 2);
@@ -362,7 +350,6 @@ class Universe {
         this.existentialWeight = this.stageData.weightMultiplier;
     }
 
-    // Actions
     createParticle() {
         const cost = this.getParticleCost();
         if (!this.canAfford(cost)) return false;
@@ -401,7 +388,6 @@ class Universe {
         return true;
     }
 
-    // Persistence
     save() {
         const data = {
             stageIndex: this.stageIndex,
@@ -436,7 +422,6 @@ class Universe {
             this.maxAwarenessThisCycle = data.maxAwarenessThisCycle || 0;
             this.lastSave = data.lastSave || Date.now();
 
-            // Ensure all upgrades exist
             UPGRADES.forEach(u => {
                 if (!this.upgrades[u.id]) {
                     this.upgrades[u.id] = { level: 0 };

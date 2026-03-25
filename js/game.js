@@ -285,13 +285,13 @@ class Game {
     startAutoSave() {
         this.autoSaveInterval = setInterval(() => {
             this.universe.save();
-            this.elements.timeDisplay.textContent = `Gespeichert: ${new Date().toLocaleTimeString()}`;
+            this.elements.timeDisplay.textContent = `Saved: ${new Date().toLocaleTimeString()}`;
         }, this.autoSaveRate);
     }
 
     save() {
         this.universe.save();
-        this.elements.timeDisplay.textContent = 'Spielstand manuell gespeichert.';
+        this.elements.timeDisplay.textContent = 'Game saved.';
     }
 }
 
