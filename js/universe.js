@@ -272,13 +272,16 @@ class Universe {
     }
 
     getParticleCost() {
+        // Scale with log of particles, not linear
         const baseCost = 1;
-        return Math.floor(baseCost * Math.pow(1.02, this.particles));
+        const logParticles = Math.log(this.particles + 1) / Math.log(1.5);
+        return Math.floor(baseCost + logParticles);
     }
 
     getMergeCost() {
         const baseCost = 3;
-        return Math.floor(baseCost * Math.pow(1.04, this.particles));
+        const logParticles = Math.log(this.particles + 1) / Math.log(1.3);
+        return Math.floor(baseCost + logParticles);
     }
 
     // Passive income per second based on stage
