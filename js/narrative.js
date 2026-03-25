@@ -1,7 +1,7 @@
 const NARRATIVE = {
     stages: {
         particle: {
-            name: "Partikel",
+            name: "Particle",
             ascii: `
         .
             `,
@@ -108,7 +108,7 @@ const NARRATIVE = {
             weightMultiplier: 100
         },
         star: {
-            name: "Stern",
+            name: "Star",
             ascii: `
             *
            /|\\
@@ -195,7 +195,7 @@ const NARRATIVE = {
             weightMultiplier: 5000
         },
         life: {
-            name: "Leben",
+            name: "Life",
             ascii: `
           o
          /|\\
@@ -234,7 +234,7 @@ const NARRATIVE = {
             weightMultiplier: 20000
         },
         civilization: {
-            name: "Zivilisation",
+            name: "Civilization",
             ascii: `
           /\\
          /  \\
@@ -282,7 +282,7 @@ const NARRATIVE = {
             weightMultiplier: 100000
         },
         universe: {
-            name: "Universum",
+            name: "Universe",
             ascii: `
         .  *  .   *    .
      *  .  (   )  .  *

@@ -163,7 +163,7 @@ class Game {
         this.applyCycleStyling();
         
         // Show memory gained
-        this.elements.timeDisplay.textContent = `+${gain} Kosmische Erinnerung gewonnen.`;
+        this.elements.timeDisplay.textContent = `+${gain} Cosmic Memory gained.`;
     }
 
     applyCycleStyling() {
@@ -190,7 +190,7 @@ class Game {
         this.elements.particles.textContent = Math.floor(this.universe.particles).toLocaleString();
 
         // Update prestige stats
-        this.elements.cycleDisplay.textContent = `Zyklus ${this.universe.cycle}`;
+        this.elements.cycleDisplay.textContent = `Cycle ${this.universe.cycle}`;
         this.elements.memoryDisplay.textContent = `${this.universe.cosmicMemory.toFixed(1)}x`;
         this.elements.awarenessDisplay.textContent = this.universe.awareness;
 
@@ -199,10 +199,10 @@ class Game {
         const mergeCost = this.universe.getMergeCost();
 
         this.elements.btnCreate.disabled = !this.universe.canAfford(createCost);
-        this.elements.btnCreate.textContent = `Erschaffen (${Math.floor(createCost).toLocaleString()})`;
+        this.elements.btnCreate.textContent = `Create (${Math.floor(createCost).toLocaleString()})`;
 
         this.elements.btnMerge.disabled = !this.universe.canAfford(mergeCost);
-        this.elements.btnMerge.textContent = `Vereinigen (${Math.floor(mergeCost).toLocaleString()})`;
+        this.elements.btnMerge.textContent = `Merge (${Math.floor(mergeCost).toLocaleString()})`;
 
         this.elements.btnAscend.disabled = !this.universe.canAscend;
         if (this.universe.isMaxStage) {
@@ -217,7 +217,7 @@ class Game {
             } else {
                 costStr = Math.floor(ascendCost).toLocaleString();
             }
-            this.elements.btnAscend.textContent = `Transzendieren (${costStr})`;
+            this.elements.btnAscend.textContent = `Ascend (${costStr})`;
         }
 
         // Prestige button
@@ -225,7 +225,7 @@ class Game {
             this.elements.btnPrestige.style.display = '';
             this.elements.btnPrestige.disabled = false;
             const prestigeGain = this.universe.getPrestigeGain();
-            this.elements.btnPrestige.textContent = `Zyklus beenden (+${prestigeGain} Erinnerung)`;
+            this.elements.btnPrestige.textContent = `End Cycle (+${prestigeGain} Memory)`;
         } else {
             this.elements.btnPrestige.style.display = 'none';
         }
@@ -254,8 +254,8 @@ class Game {
             el.innerHTML = `
                 <div class="upgrade-name">${upgrade.name}</div>
                 <div class="upgrade-desc">${upgrade.description}</div>
-                <div class="upgrade-level">Stufe: ${level}/${upgrade.maxLevel}</div>
-                <div class="upgrade-cost">${isMaxed ? 'MAX' : `Kosten: ${Math.floor(cost).toLocaleString()}`}</div>
+                <div class="upgrade-level">Level: ${level}/${upgrade.maxLevel}</div>
+                <div class="upgrade-cost">${isMaxed ? 'MAX' : `Cost: ${Math.floor(cost).toLocaleString()}`}</div>
             `;
 
             if (canBuy && !isMaxed) {
